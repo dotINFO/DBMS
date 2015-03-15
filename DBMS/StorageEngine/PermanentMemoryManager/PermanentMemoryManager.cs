@@ -24,6 +24,10 @@ namespace DBMS.StorageEngine
 
 		}
 
+		public static void Stop()
+		{
+		}
+
 		public static Database CreateDB(string DBName)
 		{	
 			var DBPath = GetDatabasePath (DBName);

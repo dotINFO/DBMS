@@ -13,12 +13,10 @@ namespace DBMS.StorageEngine
 			}
 		}
 
-
-		public static void Terminate()
+		public static void Stop()
 		{
 			FlushAllPages ();
 		}
-
 
 		private static void GetAndPinPage()
 		{
