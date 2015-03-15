@@ -23,7 +23,7 @@ namespace DBMS.StorageEngine.PermanentMemoryManager
 		{	
 			var DBPath = GetDatabasePath (DBName);
 
-			if (File.Exists (DBPath)) {
+			if (Directory.Exists (DBPath)) {
 				if (Settings.VERBOSE) {
 					Console.WriteLine ("Error: Database " + DBName + " already exists");
 				}
@@ -31,7 +31,7 @@ namespace DBMS.StorageEngine.PermanentMemoryManager
 				return null;
 			}
 
-			var DBFile = File.Create (DBPath);
+			var DBDirectory = Directory.CreateDirectory (DBPath);
 
 			return new Database (DBName);
 		}
@@ -40,8 +40,8 @@ namespace DBMS.StorageEngine.PermanentMemoryManager
 		{
 			var DBPath = GetDatabasePath (DBName);
 
-			if (File.Exists (DBPath)) {
-				File.Delete (DBPath);
+			if (Directory.Exists (DBPath)) {
+				Directory.Delete (DBPath);
 			} else {
 				if (Settings.VERBOSE) {
 					Console.WriteLine ("Error: Database " + DBName + " does not exist");
@@ -52,7 +52,7 @@ namespace DBMS.StorageEngine.PermanentMemoryManager
 
 		private static string GetDatabasePath(string DBName)
 		{
-			return DBDirectoryPath + DBName + ".db";
+			return DBDirectoryPath + DBName;
 		}
 	}
 }
