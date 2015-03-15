@@ -62,6 +62,9 @@ namespace DBMS.StorageEngine
 
 			if (!FileStreamFromFileId.TryGetValue (fileId, out fs)) {
 				Logger.Error ("Could not find the file.");
+
+				/* Sollevare eccezione */
+				return null;
 			}
 
 			var PageId = GetPageNumber (fileId);
@@ -71,6 +74,8 @@ namespace DBMS.StorageEngine
 			Pid PagePid = new Pid(fileId, PageId);
 
 			WritePage (PagePid, page);
+
+			return PagePid;
 
 		}
 
