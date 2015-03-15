@@ -21,19 +21,38 @@ namespace DBMS.StorageEngine.PermanentMemoryManager
 
 		public static Database CreateDB(string DBName)
 		{	
+			var DBPath = GetDatabasePath (DBName);
 
-			if (File.Exists (DBDirectoryPath + DBName)) {
+			if (File.Exists (DBPath)) {
+				if (Settings.VERBOSE) {
+					Console.WriteLine ("Error: Database " + DBName + " already exists");
+				}
+
 				return null;
 			}
 
-			var DBFile = File.Create (DBDirectoryPath + DBName + ".db");
+			var DBFile = File.Create (DBPath);
 
 			return new Database (DBName);
 		}
 
-		public static void RemoveDB()
+		public static void RemoveDB(string DBName)
 		{
+			var DBPath = GetDatabasePath (DBName);
 
+			if (File.Exists (DBPath)) {
+				File.Delete (DBPath);
+			} else {
+				if (Settings.VERBOSE) {
+					Console.WriteLine ("Error: Database " + DBName + " does not exist");
+				}
+			}
+
+		}
+
+		private static string GetDatabasePath(string DBName)
+		{
+			return DBDirectoryPath + DBName + ".db";
 		}
 	}
 }

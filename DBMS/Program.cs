@@ -11,7 +11,6 @@ namespace DBMS
 			var StEn = new SE ();
 				StEn.Start();
 
-
 			Console.Read ();
 		}
 	}

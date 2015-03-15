@@ -13,6 +13,7 @@ namespace DBMS.StorageEngine
 		{
 			PMM.Initialization ();
 			PMM.CreateDB ("Antani");
+			PMM.RemoveDB ("Antani");
 		}
 
 

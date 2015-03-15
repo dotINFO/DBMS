@@ -39,6 +39,7 @@
     <Compile Include="StorageEngine\PermanentMemoryManager\PermanentMemoryManager.cs" />
     <Compile Include="StorageEngine\Utility\DataBase.cs" />
     <Compile Include="StorageEngine\StorageEngine.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
