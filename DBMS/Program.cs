@@ -1,6 +1,5 @@
 using System;
 using System.Configuration;
-using DBMS.StorageEngine;
 
 namespace DBMS
 {
@@ -8,7 +7,7 @@ namespace DBMS
 	{
 		public static void Main (string[] args)
 		{
-			var StEn = new SE ();
+			var StEn = new StorageEngine.StorageEngine();
 				StEn.Start();
 
 			Console.Read ();

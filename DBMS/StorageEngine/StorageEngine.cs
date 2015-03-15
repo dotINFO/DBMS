@@ -1,18 +1,17 @@
 ﻿using System;
-using DBMS.StorageEngine.PermanentMemoryManager;
 
 namespace DBMS.StorageEngine
 {
-	public class SE
+	public class StorageEngine
 	{
-		public SE ()
+		public StorageEngine ()
 		{
 		}
 
 		public void Start()
 		{
-			PMM.Initialization ();
-			PMM.CreateDB ("Antani");
+			PermanentMemoryManager.Initialization ();
+			PermanentMemoryManager.CreateDB ("Antani");
 			//PMM.RemoveDB ("Antani");
 		}
 

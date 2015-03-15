@@ -3,9 +3,9 @@ using System.IO;
 
 using DBMS.StorageEngine.Utility;
 
-namespace DBMS.StorageEngine.PermanentMemoryManager
+namespace DBMS.StorageEngine
 {
-	public static class PMM
+	public static class PermanentMemoryManager
 	{
 		private static string DBDirectoryPath;
 
