@@ -71,6 +71,31 @@ namespace DBMS.StorageEngine
 			return new String(PageData);
 		}
 
+		public static void WritePage(Pid pid, string page)
+		{
+			FileStream fs;
+
+			if (!FileList.TryGetValue (pid.GetFileId (), out fs)) {
+				Logger.Error ("Could not find the file.");
+			}
+
+			fs.Seek (pid.GetPageId() * Settings.PAGE_DIMENSION, SeekOrigin.Begin);
+
+			using (StreamWriter sw = new StreamWriter (fs)) {
+				sw.Write (page, 0, Settings.PAGE_DIMENSION);
+			}
+		}
+
+		public static int GetPageNumber(int fileId)
+		{
+			FileStream fs;
+
+			if (!FileList.TryGetValue (fileId, out fs)) {
+				Logger.Error ("Could not find the file.");
+			}
+
+			return (int) Math.Ceiling ((double) fs.Length / Settings.PAGE_DIMENSION);
+		}
 
 		private static string GetDatabasePath(string DBName)
 		{
