@@ -38,7 +38,7 @@ namespace DBMS.StorageEngine
 				return null;
 			}
 
-			var DBDirectory = Directory.CreateDirectory (DBPath);
+			Directory.CreateDirectory (DBPath);
 
 			return new Database (DBName);
 		}
