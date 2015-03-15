@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -41,6 +42,9 @@
     <Compile Include="StorageEngine\StorageEngine.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StorageEngine\BufferManager\BufferManager.cs" />
+    <Compile Include="StorageEngine\BufferManager\FrameDescriptor.cs" />
+    <Compile Include="StorageEngine\StorageStructureManager\Pid.cs" />
+    <Compile Include="StorageEngine\Utility\Logger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -50,5 +54,6 @@
     <Folder Include="StorageEngine\BufferManager\" />
     <Folder Include="StorageEngine\Utility\" />
     <Folder Include="Databases\" />
+    <Folder Include="StorageEngine\StorageStructureManager\" />
   </ItemGroup>
 </Project>

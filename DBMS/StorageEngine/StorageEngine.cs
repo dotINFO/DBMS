@@ -10,7 +10,7 @@ namespace DBMS.StorageEngine
 
 		public void Start()
 		{
-			PermanentMemoryManager.Initialization ();
+			PermanentMemoryManager.Start ();
 			PermanentMemoryManager.CreateDB ("Antani");
 			//PMM.RemoveDB ("Antani");
 		}
