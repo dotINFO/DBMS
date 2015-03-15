@@ -11,7 +11,7 @@ namespace DBMS.StorageEngine
 	{
 
 		private static string DBDirectoryPath;
-		private static Dictionary<int, FileStream> FileList = new Dictionary<int, FileStream>();
+		private static Dictionary<int, FileStream> FileStreamFromFileId = new Dictionary<int, FileStream>();
 
 
 		public static void Start()
@@ -50,8 +50,27 @@ namespace DBMS.StorageEngine
 			if (Directory.Exists (DBPath)) {
 				Directory.Delete (DBPath);
 			} else {
-				Logger.Error("Database " + DBName + " does not exist.");
+				Logger.Error ("Database " + DBName + " does not exist.");
 			}
+		}
+   		
+		public static Pid AddPage(int fileId, string page)
+		{
+			Logger.Log ("Adding new page to " + fileId);
+
+			FileStream fs;
+
+			if (!FileStreamFromFileId.TryGetValue (fileId, out fs)) {
+				Logger.Error ("Could not find the file.");
+			}
+
+			var PageId = GetPageNumber (fileId);
+		
+			fs.Seek (0, SeekOrigin.End);
+
+			Pid PagePid = new Pid(fileId, PageId);
+
+			WritePage (PagePid, page);
 
 		}
 
@@ -62,7 +81,7 @@ namespace DBMS.StorageEngine
 
 			FileStream fs;
 
-			if (!FileList.TryGetValue (pid.GetFileId (), out fs)) {
+			if (!FileStreamFromFileId.TryGetValue (pid.GetFileId (), out fs)) {
 				Logger.Error ("Could not find the file.");
 			}
 
@@ -79,7 +98,7 @@ namespace DBMS.StorageEngine
 		{
 			FileStream fs;
 
-			if (!FileList.TryGetValue (pid.GetFileId (), out fs)) {
+			if (!FileStreamFromFileId.TryGetValue (pid.GetFileId (), out fs)) {
 				Logger.Error ("Could not find the file.");
 			}
 
@@ -94,7 +113,7 @@ namespace DBMS.StorageEngine
 		{
 			FileStream fs;
 
-			if (!FileList.TryGetValue (fileId, out fs)) {
+			if (!FileStreamFromFileId.TryGetValue (fileId, out fs)) {
 				Logger.Error ("Could not find the file.");
 			}
 
