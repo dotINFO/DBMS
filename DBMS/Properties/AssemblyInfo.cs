@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle ("DBMS")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
+[assembly: AssemblyCompany ("dotInfo")]
 [assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("paolo")]
+[assembly: AssemblyCopyright ("dotInfo")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

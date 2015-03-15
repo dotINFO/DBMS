@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{029BDBF7-2AF6-4887-91FF-6DEE088DEC55}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -36,6 +36,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageEngine\PermanentMemoryManager\PermanentMemoryManager.cs" />
+    <Compile Include="StorageEngine\Utility\DataBase.cs" />
+    <Compile Include="StorageEngine\StorageEngine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="StorageEngine\" />
+    <Folder Include="RelationalEngine\" />
+    <Folder Include="StorageEngine\PermanentMemoryManager\" />
+    <Folder Include="StorageEngine\BufferManager\" />
+    <Folder Include="StorageEngine\Utility\" />
+    <Folder Include="Databases\" />
+  </ItemGroup>
 </Project>
