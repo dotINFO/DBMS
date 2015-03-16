@@ -6,7 +6,7 @@ namespace DBMS
 	{
 		public static DebugLevel DEBUG_LEVEL = DebugLevel.ERROR_WARNING_LOG; 
 		public static int BUFFER_POOL_SIZE = 200;
-		public static int PAGE_DIMENSION = 1000;
+		public static int PAGE_DIMENSION = 1024;
 
 
 	}

@@ -7,6 +7,9 @@ using DBMS.StorageEngine.Utility;
 
 namespace DBMS.StorageEngine
 {
+	/** Permanent Memory Manager stores data in files and provides an
+     **	abstraction of memory as a set of files of data pages.
+	*/
 	public static class PermanentMemoryManager
 	{
 

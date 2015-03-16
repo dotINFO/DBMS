@@ -44,6 +44,7 @@
     <Compile Include="StorageEngine\BufferManager\FrameDescriptor.cs" />
     <Compile Include="StorageEngine\StorageStructureManager\Pid.cs" />
     <Compile Include="StorageEngine\Utility\Logger.cs" />
+    <Compile Include="StorageEngine\StorageStructureManager\Page.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
