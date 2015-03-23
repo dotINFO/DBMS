@@ -16,7 +16,7 @@ namespace DBMS.StorageEngine
 		private static string DBDirectoryPath;
 		private static Dictionary<int, FileStream> FileStreamFromFileId = new Dictionary<int, FileStream>();
 
-
+		/**/
 		public static void Start()
 		{
 			var ExePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
@@ -27,10 +27,12 @@ namespace DBMS.StorageEngine
 
 		}
 
+		/**/
 		public static void Stop()
 		{
 		}
 
+		/**/
 		public static Database CreateDB(string DBName)
 		{	
 			var DBPath = GetDatabasePath (DBName);
@@ -46,6 +48,7 @@ namespace DBMS.StorageEngine
 			return new Database (DBName);
 		}
 
+		/**/
 		public static void RemoveDB(string DBName)
 		{
 			var DBPath = GetDatabasePath (DBName);
@@ -56,7 +59,8 @@ namespace DBMS.StorageEngine
 				Logger.Error ("Database " + DBName + " does not exist.");
 			}
 		}
-   		
+
+		/**/
 		public static Pid AddPage(int fileId, string page)
 		{
 			Logger.Log ("Adding new page to " + fileId);
@@ -82,6 +86,7 @@ namespace DBMS.StorageEngine
 
 		}
 
+		/**/
 		public static String ReadPage(Pid pid)
 		{
 
@@ -102,6 +107,7 @@ namespace DBMS.StorageEngine
 			return new String(PageData);
 		}
 
+		/**/
 		public static void WritePage(Pid pid, string page)
 		{
 			FileStream fs;
@@ -117,6 +123,7 @@ namespace DBMS.StorageEngine
 			}
 		}
 
+		/**/
 		public static int GetPageNumber(int fileId)
 		{
 			FileStream fs;
@@ -128,6 +135,7 @@ namespace DBMS.StorageEngine
 			return (int) Math.Ceiling ((double) fs.Length / Settings.PAGE_DIMENSION);
 		}
 
+		/**/
 		private static string GetDatabasePath(string DBName)
 		{
 			return DBDirectoryPath + DBName;

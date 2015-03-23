@@ -7,6 +7,7 @@ namespace DBMS.StorageEngine
 		public int FrameIndex;
 		public bool Dirty = false;
 		public int PinCount = 0;
+		public Pid Pid;
 		public Page Page;
 
 		public FrameDescriptor (int frameIndex)

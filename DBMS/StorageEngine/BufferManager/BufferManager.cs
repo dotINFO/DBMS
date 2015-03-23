@@ -31,8 +31,20 @@ namespace DBMS.StorageEngine
 			FlushAllPages ();
 		}
 
-		public static void GetAndPinPage()
+		public static Page GetAndPinPage(Pid pid)
 		{
+
+			FrameDescriptor fd;
+
+			if (FrameDescriptorFromPid.TryGetValue (pid, out fd)) {
+				if (fd.PinCount == 0) {
+					/*LRU_Remove*/
+				}
+				fd.PinCount++;
+				return fd.Page;
+			}
+
+
 
 
 		}
@@ -54,7 +66,7 @@ namespace DBMS.StorageEngine
 
 			fd.PinCount--;
 			if (fd.PinCount == 0) {
-				
+				/*LRU_InsertTail*/
 			}
 
 			Logger.Log ("Unpinned page " + pid.ToString() + ", " + fd.PinCount + " pins remaining");
@@ -78,8 +90,19 @@ namespace DBMS.StorageEngine
 
 		}
 			
-		private static void InvalidatePage()
+		private static void InvalidatePage(Pid pid)
 		{
+			Logger.Log ("Invalidating page " + pid.ToString());
+
+			FrameDescriptor fd;
+
+			if (FrameDescriptorFromPid.TryGetValue (pid, out fd)) {
+
+				fd.Dirty = false;
+				fd.Pid = null;
+
+				FrameDescriptorFromPid.Remove (pid);
+			}
 
 		}
 
@@ -107,6 +130,7 @@ namespace DBMS.StorageEngine
 				FlushPage (pid);
 			}
 		}
+
 	}
 }
 
